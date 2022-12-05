@@ -1,7 +1,8 @@
 export type Movie = {
   id: number
   title: string
-  genre: string
+  imdb_id: string
+  watched: boolean
   img: string
 }
 
