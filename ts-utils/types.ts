@@ -1,3 +1,8 @@
+import store from '../client/store'
+import type { ThunkDispatch, ThunkAction } from 'redux-thunk'
+
+// PROPER TYPE TINGZ
+
 export type Movie = {
   id: number
   title: string
@@ -7,3 +12,23 @@ export type Movie = {
 }
 
 export type Movies = Movie[]
+
+// ACTION TINGZ
+
+export type MovieAction = {type: string; payload: Movie}
+export type MovieArrayAction = {type: string; payload: Movies}
+export type MoviePartialAction = {type: string; payload: Partial<Movie>}
+export type IdAction = {type: string; payload: number}
+
+export type Action = MovieAction | MovieArrayAction | MoviePartialAction | IdAction
+
+// STORE BOIIS
+
+export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = ThunkDispatch<RootState, never, Action>
+export type AppThunkAction<T = unknown> = ThunkAction<
+  Promise<T>,
+  RootState,
+  never,
+  Action
+>

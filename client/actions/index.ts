@@ -1,10 +1,20 @@
-import type { AppThunkAction } from '../store'
+import type { Movies, AppThunkAction, Action } from '../../ts-utils/types'
 
-import { Movie, Movies } from '../../ts-utils/types'
+import { fetchMovies } from '../apis/movies';
 
-export type MovieArrAction = { type: string; payload: Movies }
-export type MovieAction = { type: string; payload: Movie }
-export type PartialMovieAction = { type: string; payload: Partial<Movie> }
-export type IdAction = { type: string; payload: number }
+export const SAVE_MOVIES = 'SAVE_MOVIES'
 
-export type Action = MovieArrAction | MovieAction | PartialMovieAction | IdAction
+export function setMovies(movies: Movies): Action {
+  return {
+    type: SAVE_MOVIES,
+    payload: movies
+  }
+}
+
+export function getMovies(): AppThunkAction {
+  return (dispatch) => {
+    return fetchMovies()
+      .then(movies => dispatch(setMovies(movies)))
+      .catch(err => console.log(err.message))
+  }
+}

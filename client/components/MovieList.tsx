@@ -1,24 +1,15 @@
-import { useEffect, useState } from 'react'
-import { Movie } from '../../ts-utils/types'
-import {fetchMovies} from '../apis/movies'
+import {useAppSelector} from '../../ts-utils/hooks'
+import { Movies } from '../../ts-utils/types'
 
 function MovieList() {
-  const [movies, setMovies] = useState<Movie[]>([])
-
-  useEffect(() => {
-    fetchMovies()
-      .then(moviesArr => setMovies(moviesArr))
-      .catch(err => console.log('oh nooooo precious', err.message))
-  }, [])
-
-  console.log(movies);
-  
+  const movieList: Movies = useAppSelector(state => state.movies)
+  console.log(movieList)
 
   return (
     <div>
       <h1>Moo-vies</h1>
       <div>
-        {movies.map((movie) => (
+        {(movieList).map((movie) => (
           <p key={movie.id}>{movie.title}</p>
         ))}
       </div>

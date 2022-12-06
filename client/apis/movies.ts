@@ -1,7 +1,7 @@
 import request from 'superagent'
-import { Movie } from '../../ts-utils/types'
+import { Movies } from '../../ts-utils/types'
 
-export function fetchMovies(): Promise<Movie[]> {
+export function fetchMovies(): Promise<Movies> {
   return request.get('/v1/movies')
     .then((res) => res.body)
 }
