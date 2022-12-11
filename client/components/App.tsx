@@ -3,6 +3,8 @@ import {useEffect} from 'react'
 import { useAppDispatch } from '../../ts-utils/hooks'
 
 import MovieList from './MovieList'
+import AddMovie from './AddMovie'
+import Nav from './Nav'
 
 import { getMovies } from '../actions'
 
@@ -19,8 +21,10 @@ function App() {
         <h1>Moo-vies</h1>
       </header>
       <section className="main">
+        <Nav />
         <Routes>
           <Route path='/' element={<MovieList />} />
+          <Route path='/add' element={<AddMovie />} />
         </Routes>
       </section>
     </>

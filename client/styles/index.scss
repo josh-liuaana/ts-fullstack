@@ -7,4 +7,16 @@ body {
   font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+.movie-tiles-cont {
+  display: flex;
+}
 
+.result {
+  display: flex;
+  align-items: center
+}
+
+.result img {
+  max-width: 150px;
+  margin: 5px 20px
+}

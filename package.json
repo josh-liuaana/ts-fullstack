@@ -23,7 +23,6 @@
   ],
   "author": "Dev Academy Aotearoa",
   "license": "ISC",
-
   "babel": {
     "presets": [
       "@babel/preset-typescript",
@@ -36,8 +35,6 @@
       ]
     ]
   },
-  
-
   "eslintConfig": {
     "extends": "@devacademy/eslint-config/react",
     "ignorePatterns": [
@@ -93,9 +90,13 @@
     "webpack-cli": "^4.9.2"
   },
   "dependencies": {
+    "dotenv": "^16.0.3",
+    "dotenv-webpack": "^8.0.1",
     "express": "^4.17.2",
     "knex": "^2.3.0",
-    "pg": "^8.8.0"
+    "pg": "^8.8.0",
+    "semantic-ui-css": "^2.5.0",
+    "semantic-ui-react": "^2.1.4"
   },
   "prettier": {
     "semi": false,

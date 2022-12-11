@@ -1,5 +1,5 @@
 import { Movies, Action } from '../../ts-utils/types'
-import { SAVE_MOVIES } from '../actions'
+import { SAVE_MOVIES, SAVE_ONE_MOVIE } from '../actions'
 
 const initialState: Movies = []
 
@@ -8,6 +8,8 @@ function moviesReducer(state = initialState, action: Action) {
   switch(type) {
     case SAVE_MOVIES:
       return payload
+    case SAVE_ONE_MOVIE:
+      return [...state, payload]
     default:
       return state
   }

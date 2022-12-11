@@ -3,7 +3,7 @@ import type { ThunkDispatch, ThunkAction } from 'redux-thunk'
 
 // PROPER TYPE TINGZ
 
-export type Movie = {
+export interface Movie {
   id: number
   title: string
   imdb_id: string
@@ -12,6 +12,16 @@ export type Movie = {
 }
 
 export type Movies = Movie[]
+
+export interface ImdbMovie {
+  description: string
+  id: string
+  image: string
+  resultType: string
+  title: string
+}
+
+export type ImdbMovies = ImdbMovie[]
 
 // ACTION TINGZ
 
