@@ -20,3 +20,12 @@ export function deleteMovie(id: number): Promise<null> {
     .delete('/v1/movies/' + id)
     .then(() => {return null})
 }
+
+export function updateMovie(id: number, watched: boolean) {
+  return request
+    .patch('/v1/movies/' + id)
+    .send({watched})
+    .then((res) => {
+      return res.body
+    })
+}

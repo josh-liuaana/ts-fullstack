@@ -16,3 +16,7 @@ export function addMovie(movie: Partial<Movie>, db = connection): Promise<number
 export function delMovie(id: number, db = connection): Promise<number[]> {
   return db('movies').where('id', id).del()
 }
+
+export function updMovie(id: number, watched: boolean, db = connection) {  
+  return db('movies').where('id', id).update({watched: watched})
+}

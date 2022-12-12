@@ -35,4 +35,14 @@ router.delete('/:id', (req, res) => {
     .catch((err) => console.log(err.message))
 })
 
+router.patch('/:id', (req, res) => {
+  const id = Number(req.params.id)
+  const watched = req.body.watched
+  db.updMovie(id, watched)
+    .then((result) => {
+      res.sendStatus(200)
+    })
+    .catch((err) => console.log(err.message))
+})
+
 export default router

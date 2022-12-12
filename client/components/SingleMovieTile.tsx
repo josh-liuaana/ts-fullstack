@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Divider, Card, Image, Button, Icon, Modal } from 'semantic-ui-react'
 import {Movie} from '../../ts-utils/types'
 import {useAppDispatch} from '../../ts-utils/hooks'
-import { deleteMovieThunk } from '../actions'
+import { deleteMovieThunk, updateMovieThunk } from '../actions'
 
 
 function SingleMovieTile({movie}: {movie: Movie}) {
@@ -19,9 +19,9 @@ function SingleMovieTile({movie}: {movie: Movie}) {
     setOpen(false)
   }
 
-  const handleWatched = () => {
+  const handleWatched = (id: number, watched: boolean) => {
     setSeenStatus(!seenStatus)
-    // action call --> all ze way to the db. just send the truthiness
+    dispatch(updateMovieThunk(id, !watched))
   }
 
   const handleInfo = () => {
@@ -54,7 +54,7 @@ function SingleMovieTile({movie}: {movie: Movie}) {
             <Card.Content extra>
             <div>
                 <Button.Group widths='2'>
-                  <Button animated='fade' fluid basic color='green' onClick={handleWatched}>
+                  <Button animated='fade' fluid basic color='green' onClick={() => handleWatched(movie.id, seenStatus)}>
                     <Button.Content visible> Watched </Button.Content>
                     <Button.Content hidden>
                       <Icon name='eye slash outline' />
