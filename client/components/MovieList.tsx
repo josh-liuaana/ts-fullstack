@@ -9,7 +9,7 @@ function MovieList() {
     <>
       <div className='movie-tiles-cont'>
         {(movieList).map((movie) => (
-          <div key={movie.id}>
+          <div key={movie.id} className='movie-tile'>
             <Card.Group>
               <Card>
                 <Image src={movie.img} wrapped ui={false} />

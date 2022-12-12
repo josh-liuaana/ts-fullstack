@@ -27,9 +27,9 @@ export function getMovies(): AppThunkAction {
   }
 }
 
-export function addMovieThunk(movie: Partial<Movie>) {
+export function addMovieThunk(movie: Partial<Movie>): AppThunkAction {
   return (dispatch) => {
-    postOneMovie(movie)
+    return postOneMovie(movie)
       .then((movieFromDb) => {
         dispatch(saveOneMovie(movieFromDb))
       })

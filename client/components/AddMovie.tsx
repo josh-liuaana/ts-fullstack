@@ -32,7 +32,7 @@ function AddMovie() {
       imdb_id: movie.id,
       title: movie.title,
       img: movie.image,
-      // description: movie.description,
+      // description: movie.description, // need to re migrate and run new seeds
       watched: false,
     }
     dispatch(addMovieThunk(formattedMovie))

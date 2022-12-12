@@ -9,6 +9,12 @@ body {
 
 .movie-tiles-cont {
   display: flex;
+  flex-wrap: wrap;
+  margin: 15px;
+}
+
+.movie-tile {
+  margin: 15px
 }
 
 .result {

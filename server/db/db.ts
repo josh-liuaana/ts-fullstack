@@ -12,3 +12,7 @@ export function getMovieById(id: number, db = connection): Promise<Movie> {
 export function addMovie(movie: Partial<Movie>, db = connection): Promise<number[]> {
   return db('movies').insert(movie)
 }
+
+export function delMovie(id: number, db = connection): Promise<number[]> {
+  return db('movies').where('id', id).del()
+}

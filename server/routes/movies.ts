@@ -26,4 +26,13 @@ router.post('/', (req, res) => {
     .catch((err) => console.log(err.message))
 })
 
+router.delete('/:id', (req, res) => {
+  const id = Number(req.params.id)
+  db.delMovie(id)
+    .then(() => {
+      res.sendStatus(200)
+    })
+    .catch((err) => console.log(err.message))
+})
+
 export default router
