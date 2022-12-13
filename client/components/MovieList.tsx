@@ -6,13 +6,11 @@ function MovieList() {
   const movieList: Movies = useAppSelector(state => state.movies)
 
   return (
-    <>
       <div className='movie-tiles-cont'>
-        {(movieList).map((movie) => (          
+        {(movieList).map((movie) => (
             <SingleMovieTile key={movie.id} movie={movie} />
         ))}
       </div>
-    </>
   )
 }
 

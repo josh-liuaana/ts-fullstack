@@ -23,6 +23,17 @@ export interface ImdbMovie {
 
 export type ImdbMovies = ImdbMovie[]
 
+export interface ImdbTrailer {
+  errorMessage: string
+  fullTitle: string
+  imDbId: string
+  title: string
+  type: string
+  videoId: string
+  videoUrl: string
+  year: string
+}
+
 // ACTION TINGZ
 
 export type MovieAction = {type: string; payload: Movie}

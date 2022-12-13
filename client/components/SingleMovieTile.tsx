@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Divider, Card, Image, Button, Icon, Modal } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
+
 import {Movie} from '../../ts-utils/types'
 import {useAppDispatch} from '../../ts-utils/hooks'
 import { deleteMovieThunk, updateMovieThunk } from '../actions'
@@ -25,7 +27,7 @@ function SingleMovieTile({movie}: {movie: Movie}) {
   }
 
   const handleInfo = () => {
-    alert('handleInfo button triggered') // will access a secondary api call to the title to get all the informations. Inc. embedding a video
+    // alert('handleInfo button triggered') // will access a secondary api call to the title to get all the informations. Inc. embedding a video
   }
 
   useEffect(() => {
@@ -61,10 +63,15 @@ function SingleMovieTile({movie}: {movie: Movie}) {
                     </Button.Content>
                   </Button>
                   <Button animated='fade' fluid basic color='black' onClick={handleInfo}>
-                    <Button.Content visible> Info </Button.Content>
-                    <Button.Content hidden>
-                      <Icon name='film' />
-                    </Button.Content>
+                    <Link to={`/movie-info/${movie.imdb_id}`}>
+
+
+
+                      <Button.Content visible> Info </Button.Content>
+                      <Button.Content hidden>
+                        <Icon name='film' />
+                      </Button.Content>
+                    </Link>
                   </Button>
                 </Button.Group>
               <Divider />

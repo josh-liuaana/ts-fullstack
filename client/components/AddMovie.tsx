@@ -15,11 +15,12 @@ function AddMovie() {
 
   const handleSubmit = (evt: SyntheticEvent) => {
     evt.preventDefault()
-    searchForMovie(movieSearch)
-    .then((resultsArray) => {
-      setResults(resultsArray)
-    })
-    .catch((err) => console.log(err.message))
+    console.log('API calls currently disabled')
+    // searchForMovie(movieSearch)
+    // .then((resultsArray) => {
+    //   setResults(resultsArray)
+    // })
+    // .catch((err) => console.log(err.message))
   }
 
 
