@@ -12,10 +12,11 @@ function MovieInfo() {
 
   useEffect(() => {
     // imdb_id && movieData(imdb_id)
-    //   .then((dataArray) => {
-    //     setData(dataArray)
-    //   })
-    //   .catch((err) => console.log(err.mesage))
+      // .then((dataArray) => {
+      //   setData(dataArray)
+      //   console.log(dataArray)
+      // })
+      // .catch((err) => console.log(err.mesage))
     console.log('API calls currently disabled')
     }, [imdb_id])
 

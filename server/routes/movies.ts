@@ -1,7 +1,7 @@
 import express from "express";
 const router = express.Router()
 
-import * as db from '../db/db' // import everything from db file?
+import * as db from '../db/db'
 
 router.get('/', (req, res) => {
   db.getAllMovies()
@@ -40,7 +40,8 @@ router.patch('/:id', (req, res) => {
   const watched = req.body.watched
   db.updMovie(id, watched)
     .then((result) => {
-      res.sendStatus(200)
+      console.log(result) //always 1? shouldnt it change if false?
+      res.json(result)
     })
     .catch((err) => console.log(err.message))
 })

@@ -3,6 +3,8 @@ import { Movies } from '../../ts-utils/types'
 import SingleMovieTile from './SingleMovieTile'
 
 function MovieList() {
+
+  // get info from state, defining the variable to have the Movies type
   const movieList: Movies = useAppSelector(state => state.movies)
 
   return (

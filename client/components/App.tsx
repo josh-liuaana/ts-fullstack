@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, Link } from 'react-router-dom'
 import {useEffect, useState} from 'react'
 import { useAppDispatch } from '../../ts-utils/hooks'
 import { Button, Grid, Icon, Menu, Segment, Sidebar} from 'semantic-ui-react'
@@ -20,20 +20,11 @@ function App() {
 
   return (
     <>
-      <Grid columns={1}>
+          
+      <Grid columns={1} className='grid-cont'>
         <Grid.Column>
           <Button.Group labeled icon>
-
-          <Button
-            onClick={() => setVisible(!visible)}
-            icon='bars'
-            content='MENU'
-            >
-          </Button>
-              </Button.Group>
-        </Grid.Column>
-        <Grid.Column>
-          <Sidebar.Pushable as={Segment}>
+          </Button.Group><Sidebar.Pushable as={Segment}>
             <Sidebar
               as={Menu}
               animation='slide out'
@@ -43,18 +34,37 @@ function App() {
               visible={visible}
               width='thin'
               >
-              <Menu.Item as='a'>
-                <Icon name='home' />
-                Home
-              </Menu.Item>
-              <Menu.Item as='a'>
-                <Icon name='add' />
-                Add Movie
-              </Menu.Item>
+                <Link to='/'>
+                  <Menu.Item onClick={() => setVisible(false)}>
+                    <Icon name='home' />
+                    Home
+                  </Menu.Item>
+                </Link>
+                <Link to='/add'>
+                  <Menu.Item onClick={() => setVisible(false)}>
+                    <Icon name='add' />
+                    Add Movie
+                  </Menu.Item>
+                </Link>
             </Sidebar>
             <Sidebar.Pusher>
               <Segment basic>
-                <Routes>
+
+              <div className='button-cont'>
+                <Button
+                  className='menu-button'
+                  onClick={() => setVisible(!visible)}
+                  icon='bars'
+                  content='MENU'
+                  >
+                </Button>            
+                <div className='title'>
+                  <h1>MOO-VIES</h1>
+                </div>
+              </div>
+            
+                {/* ROUTES ARE NESTED WITHIN THE SIDEBAR SO THAT EACH ROUTE PUSHES WITH THE SIDEBAR */}
+                <Routes> 
                   <Route path='/' element={<MovieList />} />
                   <Route path='/add' element={<AddMovie />} />
                   <Route path='/movie-info/:imdb_id' element={<MovieInfo />} />
