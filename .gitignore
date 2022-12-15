@@ -21,4 +21,4 @@ coverage/*
 # Dotenv env settings
 .env
 
-movieData.json
+movieData.md
