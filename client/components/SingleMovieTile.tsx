@@ -64,9 +64,6 @@ function SingleMovieTile({movie}: {movie: Movie}) {
                   </Button>
                   <Button animated='fade' fluid basic color='black' onClick={handleInfo}>
                     <Link to={`/movie-info/${movie.imdb_id}`}>
-
-
-
                       <Button.Content visible> Info </Button.Content>
                       <Button.Content hidden>
                         <Icon name='film' />

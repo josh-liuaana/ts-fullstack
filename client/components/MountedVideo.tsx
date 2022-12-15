@@ -1,12 +1,14 @@
 import {useEffect, useState} from 'react'
 import { useParams } from 'react-router-dom'
+import { Modal, Header, Button, Icon } from 'semantic-ui-react'
+
 import { ImdbTrailer } from '../../ts-utils/types'
 import { youtubeTrailer } from '../apis/imdb'
 
 
 function MountedVideo() {
 
-  const trailerTemplate = {
+  const stub = {
     errorMessage: "",
     fullTitle: "The Lord of the Rings: The Fellowship of the Ring (2001)",
     imDbId: "tt0120737",
@@ -18,48 +20,46 @@ function MountedVideo() {
   }
 
   const { imdb_id } = useParams()
-  const [trailerData, setTrailerData] = useState<ImdbTrailer | []>([])
-  const [showTrailer, setShowTrailer] = useState(true)
-  const formattedTrailer = 'https://www.youtube.com/embed/nOFhHEepF4s'
+  const [trailerData, setTrailerData] = useState<ImdbTrailer>(stub)
+  const [showTrailer, setShowTrailer] = useState(false)
   const youTubeUrl = "https://www.youtube.com/embed/"
 
   useEffect(() => {
-    console.log('API calls currently disabled')
-    // imdb_id && youtubeTrailer(imdb_id)
-    // .then((trailerDataArray) => {
-    //   setTrailerData(trailerDataArray)
-    //   setShowTrailer(true)
-    //   console.log(trailerDataArray)
-    // })
-    // .catch((err) => console.log(err.mesage))
+    // console.log('API calls currently disabled')
+    imdb_id && youtubeTrailer(imdb_id)
+    .then((trailerDataArray) => {
+      setTrailerData(trailerDataArray)
+    })
+    .catch((err) => console.log(err.mesage))
   }, [imdb_id])
-
-  console.log('trailer stub data: ', trailerTemplate)
 
   return (
     <div>
-      <p>
-        mounted video component
-      </p>
-      <p>
-          {trailerTemplate.title}
-      </p>
-      {showTrailer? 
-      <div>
-        <iframe width="420" height="315" title={trailerTemplate.title} src={youTubeUrl + trailerTemplate.videoId} />
-      </div> : null
-      
-    }
+      <Modal
+        basic
+        onClose={() => setShowTrailer(false)}
+        onOpen={() => setShowTrailer(true)}
+        open={showTrailer}
+        size='small'
+        trigger={<Button>Watch Trailer</Button>}
+        >
+        <Header>
+          {trailerData.title}
+        </Header>
+        <Modal.Content>
+          <div>
+            <iframe allow="fullscreen" className="video" title={trailerData.title} src={youTubeUrl + trailerData.videoId} />
+          </div>
+        </Modal.Content>
+        <Modal.Actions>
+          <Button basic color='red' inverted onClick={() => setShowTrailer(false)}>
+            <Icon name='remove' /> Close
+          </Button>
+        </Modal.Actions>
+      </Modal>
+
     </div>
   );
 }
 
 export default MountedVideo;
-
-
-
-{/* <iframe width="420" height="315"
-src="https://www.youtube.com/embed/tgbNymZ7vqY">
-src="https://www.youtube.com/embed/nOFhHEepF4s"
-src="https://www.youtube.com/watch?v=nOFhHEepF4s"
-</iframe> */}

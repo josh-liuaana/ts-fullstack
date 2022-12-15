@@ -40,8 +40,9 @@ export type MovieAction = {type: string; payload: Movie}
 export type MovieArrayAction = {type: string; payload: Movies}
 export type MoviePartialAction = {type: string; payload: Partial<Movie>}
 export type IdAction = {type: string; payload: number}
+export type ImdbAction = {type: string; payload: string}
 
-export type Action = MovieAction | MovieArrayAction | MoviePartialAction | IdAction
+export type Action = MovieAction | MovieArrayAction | MoviePartialAction | IdAction | ImdbAction
 
 // STORE BOIIS
 
