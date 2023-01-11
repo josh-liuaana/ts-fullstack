@@ -34,6 +34,23 @@ export interface ImdbTrailer {
   year: string
 }
 
+export interface ImdbData {
+  similars: Similar[]
+  title: string
+  plot: string
+}
+
+export interface Params {
+  imdb_id: string;
+}
+
+export interface Similar {
+  id: string
+  imDbRating: string
+  image: string
+  title: string
+}
+
 // ACTION TINGZ
 
 export type MovieAction = {type: string; payload: Movie}

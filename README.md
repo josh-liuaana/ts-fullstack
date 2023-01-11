@@ -1,6 +1,7 @@
-# Fullstack Collection App
+# Fullstack Typescript Collection App
 
-This repo is designed to provide space to code a fullstack app. It contains node modules and folders for databases, routes, api requests, react components, and redux actions and creators. Let's get going!
+This repo contains a fullstack CRUD app with typescript. Includes both external API's (imdb-api) and an internal database storing saved movies
+The app also utilises Semantic UI for styling framework
 
 ## Setup
 

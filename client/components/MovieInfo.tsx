@@ -4,13 +4,15 @@ import { useParams } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '../../ts-utils/hooks'
 import { getImdbData } from '../actions'
 
+import { ImdbData, Params, Similar } from '../../ts-utils/types'
+
 import MountedVideo from './MountedVideo'
 
 
 function MovieInfo() {
   const dispatch = useAppDispatch()
-  const { imdb_id } = useParams()
-  const imdbData = useAppSelector(state => state.imdbData)
+  const { imdb_id } = useParams<keyof Params>() as Params
+  const imdbData: ImdbData = useAppSelector(state => state.imdbData)
   console.log(imdbData)
 
   useEffect(() => {
@@ -18,7 +20,8 @@ function MovieInfo() {
   }, [dispatch, imdb_id])
 
   
-  const similars = imdbData.similars
+  const similars: Similar[] = imdbData.similars
+  console.log(similars)
 
   return (
     <div>

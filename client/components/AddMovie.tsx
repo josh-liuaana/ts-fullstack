@@ -15,7 +15,7 @@ function AddMovie() {
 
   const handleSubmit = (evt: SyntheticEvent) => {
     evt.preventDefault()
-    console.log('API calls currently disabled')
+    // console.log('API calls currently disabled')
     searchForMovie(movieSearch)
     .then((resultsArray) => {
         console.log(resultsArray)

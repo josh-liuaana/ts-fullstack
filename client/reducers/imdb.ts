@@ -1,7 +1,11 @@
-import { Action } from "../../ts-utils/types";
+import { Action, ImdbData } from "../../ts-utils/types";
 import { IMDB_DATA } from "../actions";
 
-const initialState = {}
+const initialState: ImdbData = {
+  similars: [],
+  title: '',
+  plot: ''  
+}
 
 function imdbReducer(state = initialState, action: Action) {
   const {type, payload} = action
