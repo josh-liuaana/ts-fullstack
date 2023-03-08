@@ -55,7 +55,6 @@ function App() {
                   className='menu-button'
                   onClick={() => setVisible(!visible)}
                   icon='bars'
-                  content='MENU'
                   >
                 </Button>            
                 <div className='title'>

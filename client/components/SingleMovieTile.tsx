@@ -46,7 +46,7 @@ function SingleMovieTile({movie}: {movie: Movie}) {
       <div key={movie.id} className='movie-tile'>
         <Card.Group>
           <Card>
-            <Image src={movie.img} wrapped ui={false} />
+            <Image src={movie.img} wrapped ui={false} alt={movie.title}/>
             <Card.Content>
               <Card.Header>{movie.title}</Card.Header>
               <Card.Meta>

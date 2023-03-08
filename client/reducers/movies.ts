@@ -17,7 +17,14 @@ function moviesReducer(state = initialState, action: Action) {
       return state.filter(movie => movie.id !== payload)
 
     case UPDATE_MOVIE:
-      return state
+      return state.map((movie) => {
+        if (movie.id === payload) {
+          movie.watched = !movie.watched
+          return movie
+        } else {
+          return movie
+        }
+      })
       
     default:
       return state

@@ -4,7 +4,8 @@ import { Movies, Movie } from '../../ts-utils/types'
 // fetchMovies function expected to return a promise of the array Movies
 
 export function fetchMovies(): Promise<Movies> {
-  return request.get('/v1/movies')
+  return request
+    .get('/v1/movies')
     .then((res) => res.body)
 }
 
@@ -39,7 +40,7 @@ export function updateMovie(id: number, watched: boolean): Promise<boolean> {
     .patch('/v1/movies/' + id)
     .send({watched})
     .then((res) => {
-      console.log(res.body) //always 1
+      // console.log(res.body) //always 1
       return res.body
     })
 }

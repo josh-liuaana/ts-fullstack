@@ -8,6 +8,22 @@ export const SAVE_ONE_MOVIE = 'SAVE_ONE_MOVIE'
 export const DEL_MOVIE = 'DEL_MOVIE'
 export const UPDATE_MOVIE = 'UPDATE_MOVIE'
 export const IMDB_DATA = 'IMDB_DATA'
+export const REQUEST_MOVIES = 'REQUEST_MOVIES'
+export const RECEIVE_MOVIES = 'RECEIVE_MOVIES'
+
+export function requestMovies(): Action {
+  return {
+    type: REQUEST_MOVIES,
+    payload: null
+  }
+}
+
+export function receieveMovies(): Action {
+  return {
+    type: RECEIVE_MOVIES,
+    payload: null
+  }
+}
 
 export function setMovies(movies: Movies): Action {
   return {
@@ -48,9 +64,26 @@ export function loadMovieData(data: object): Action { // could probably do with 
 
 // thunks
 
+// IMBD MOVIE THUNK WORKINGS
+
+// export function searchImdb(movieStr: string) {
+//   console.log('i am inside the searchIMDBThunk before the return dispatch');    
+
+//   return (dispatch) => {
+//     console.log('i am inside the searchIMDBThunk dispatch block');    
+//     dispatch(requestMovies())
+//     return searchForMovie(movieStr)
+//       .then(movies => 
+//         dispatch(receieveMovies(movies)))
+//       .catch(err => console.log(err.message))
+//   }
+// }
+
+
 export function getMovies(): AppThunkAction {
   return (dispatch) => {
-    return fetchMovies()
+    // dispatch(requestMovies())
+    return fetchMovies() // from, api
       .then(movies => dispatch(setMovies(movies)))
       .catch(err => console.log(err.message))
   }
