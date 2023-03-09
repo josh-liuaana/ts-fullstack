@@ -7,8 +7,8 @@ const server = express()
 
 server.use(express.json())
 server.use(express.static(path.join(__dirname, 'public')))
-
 server.use('/v1/movies', movieRoute)
+
 
 // wildcard route
 server.get('*', (req, res) => {

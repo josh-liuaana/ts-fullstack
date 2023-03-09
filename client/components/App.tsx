@@ -55,11 +55,10 @@ function App() {
                   className='menu-button'
                   onClick={() => setVisible(!visible)}
                   icon='bars'
-                  content='MENU'
                   >
                 </Button>            
                 <div className='title'>
-                  <h1>MOO-VIES</h1>
+                  <h1>MOOOOOOOOOO-VIES</h1>
                 </div>
               </div>
             

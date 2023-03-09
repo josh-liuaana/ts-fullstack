@@ -1,10 +1,22 @@
-import { createStore, compose, applyMiddleware } from 'redux'
-import thunk from 'redux-thunk'
+  import { createStore, applyMiddleware } from 'redux'
+import thunkMiddleware from 'redux-thunk'
+import { composeWithDevTools } from '@redux-devtools/extension'
+import type { ThunkAction as BaseThunkAction } from 'redux-thunk'
+import type { AnyAction } from 'redux'
+
 import reducers from './reducers'
 
-const composeEnhancers =
-  (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
-const store = createStore(reducers, composeEnhancers(applyMiddleware(thunk)))
+export type RootState = ReturnType<typeof store.getState>
+export type ThunkAction<T = void> = BaseThunkAction<
+Promise<T>,
+RootState,
+void,
+AnyAction
+>
 
+const store = createStore(
+  reducers,
+  composeWithDevTools(applyMiddleware(thunkMiddleware))
+)
 
 export default store

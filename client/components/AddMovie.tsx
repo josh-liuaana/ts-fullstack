@@ -1,11 +1,12 @@
 import { useState, SyntheticEvent, ChangeEvent } from 'react'
 import {useAppDispatch} from '../../ts-utils/hooks'
-import { Form, Input, Button } from 'semantic-ui-react'
+import { Form, Input, Button, Card, Image, Icon } from 'semantic-ui-react'
 import { useNavigate } from 'react-router-dom'
 
 import { searchForMovie } from '../apis/imdb'
-import { addMovieThunk } from '../actions'
+import { addMovieThunk, receieveMovies, requestMovies } from '../actions'
 import { ImdbMovies, ImdbMovie } from '../../ts-utils/types'
+import Waiting from './Waiting'
 
 function AddMovie() {
   const navigate = useNavigate()
@@ -14,12 +15,17 @@ function AddMovie() {
   const [results, setResults] = useState<ImdbMovies>([])
 
   const handleSubmit = (evt: SyntheticEvent) => {
+    
     evt.preventDefault()
     // console.log('API calls currently disabled')
+    dispatch(requestMovies())
     searchForMovie(movieSearch)
+    // console.log(movieSearch)
+    // searchImdb(movieSearch)
     .then((resultsArray) => {
-        console.log(resultsArray)
+      console.log(resultsArray)
       setResults(resultsArray)
+      dispatch(receieveMovies())
     })
     .catch((err) => console.log(err.message))
   }
@@ -59,14 +65,29 @@ function AddMovie() {
           <Form.Field control={Button}>Search</Form.Field>
         </Form>
       </div>
+
+      <Waiting />
+
+      <Card.Group >
       {results.map((movie) => (
-        <div className="result" key={movie.id}>
-          <img src={movie.image} alt="movie poster" />
-          <h6>{movie.title}</h6>
-          <p>{movie.description}</p>
-          <button onClick={() => handleAdd(movie)}>Add</button>
+        <div key={movie.id} className='movie-tile'>
+          <Card>
+            <Image src={movie.image} wrapped ui={false} />
+            <Card.Content>
+              <Card.Header>{movie.title}</Card.Header>
+            </Card.Content>
+            <Card.Content extra>
+              <Button animated='fade' fluid basic color='green' onClick={() => handleAdd(movie)}>
+                <Button.Content visible> Add Movie </Button.Content>
+                <Button.Content hidden>
+                  <Icon name='add' />
+                </Button.Content>
+              </Button>
+            </Card.Content>
+          </Card> 
         </div>
-      ))}
+        ))}
+        </Card.Group>
     </div>
   )
 }
