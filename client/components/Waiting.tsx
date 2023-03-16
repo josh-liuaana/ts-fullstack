@@ -6,7 +6,7 @@ function Waiting() {
   return (
     <div>
       {show 
-        ? <img src="/waiting.gif" />
+        ? <img src="/waiting.gif" alt="loading screen"/>
         : null}
     </div>
   );

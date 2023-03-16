@@ -1,4 +1,4 @@
-import { useState, SyntheticEvent, ChangeEvent } from 'react'
+import { useState, ChangeEvent, FormEvent } from 'react'
 import {useAppDispatch} from '../../ts-utils/hooks'
 import { Form, Input, Button, Card, Image, Icon } from 'semantic-ui-react'
 import { useNavigate } from 'react-router-dom'
@@ -14,7 +14,7 @@ function AddMovie() {
   const [movieSearch, setMovieSearch] = useState('')
   const [results, setResults] = useState<ImdbMovies>([])
 
-  const handleSubmit = (evt: SyntheticEvent) => {
+  const handleSubmit = (evt: FormEvent) => {
     
     evt.preventDefault()
     // console.log('API calls currently disabled')

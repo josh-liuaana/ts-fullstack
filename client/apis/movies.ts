@@ -1,11 +1,13 @@
 import request from 'superagent'
 import { Movies, Movie } from '../../ts-utils/types'
 
+const url = '/v1/movies'
+
 // fetchMovies function expected to return a promise of the array Movies
 
 export function fetchMovies(): Promise<Movies> {
   return request
-    .get('/v1/movies')
+    .get(url)
     .then((res) => res.body)
 }
 
@@ -14,7 +16,7 @@ export function fetchMovies(): Promise<Movies> {
 
 export function postOneMovie(movie: Partial<Movie>): Promise<Movie> {
   return request
-    .post('/v1/movies')
+    .post(url)
     .send(movie)
     .then((res) => {
       return res.body
@@ -27,7 +29,7 @@ export function postOneMovie(movie: Partial<Movie>): Promise<Movie> {
 
 export function deleteMovie(id: number): Promise<null> {
   return request
-    .delete('/v1/movies/' + id)
+    .delete(`${url}/${id}`)
     .then(() => {return null})
 }
 
@@ -37,10 +39,9 @@ export function deleteMovie(id: number): Promise<null> {
 
 export function updateMovie(id: number, watched: boolean): Promise<boolean> {
   return request
-    .patch('/v1/movies/' + id)
+    .patch(`${url}/${id}`)
     .send({watched})
     .then((res) => {
-      // console.log(res.body) //always 1
       return res.body
     })
 }
