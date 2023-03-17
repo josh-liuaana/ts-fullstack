@@ -51,6 +51,10 @@ export interface Similar {
   title: string
 }
 
+export interface AddMovieResult {
+  id: number
+}
+
 // ACTION TINGZ
 
 export type MovieAction = {type: string; payload: Movie}

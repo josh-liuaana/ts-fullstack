@@ -15,12 +15,16 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
   const movie = req.body
+  console.log('ROUTE: movie router -> first: ', movie);
+  
   db.addMovie(movie)
-    .then((idArray) => { // when this is commented out the test return the idArray [3]
-      const id = idArray[0]
-      return db.getMovieById(id)
+    .then((idArray) => {
+      console.log('ROUTE: idArray -> first then block: ', idArray) // [ { id: 28 } ]
+      const idNum = idArray[0].id
+      return db.getMovieById(idNum)
     })
     .then((dbMovie) => {
+      console.log('ROUTE: dbMovie -> second then block: ', dbMovie)
       res.json(dbMovie)
     })
     .catch((err) => {

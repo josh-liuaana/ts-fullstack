@@ -1,5 +1,6 @@
 import connection from "./connection";
-import type { Movie, Movies } from "../../ts-utils/types";
+import type { Movie, Movies, AddMovieResult } from "../../ts-utils/types";
+
 
 //Simple get all movies route, have used the select all, but would work without. 
 // Includes the expected return of the Movie array Promise<Movies>
@@ -18,8 +19,8 @@ export function getMovieById(id: number, db = connection): Promise<Movie> {
 // add db function with the defined type of movie as Partial<Movie> as the passed information 
 //wont have an id. Returned value will simply be the new number, therefore Promise<number[]>
 
-export function addMovie(movie: Partial<Movie>, db = connection): Promise<number[]> {
-  return db('movies').insert(movie)
+export function addMovie(movie: Partial<Movie>, db = connection): Promise<AddMovieResult[]> {
+  return db('movies').insert(movie).returning(['id'])
 }
 
 // del db function with defined type of numbe for id and return the id of deleted
