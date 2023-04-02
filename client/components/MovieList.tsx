@@ -12,6 +12,7 @@ function MovieList() {
         {(movieList).map((movie) => (
             <SingleMovieTile key={movie.id} movie={movie} />
         ))}
+        <hr />
       </div>
   )
 }
